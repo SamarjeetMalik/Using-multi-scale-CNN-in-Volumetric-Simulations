@@ -13,13 +13,6 @@ In the following, Linux is assumed as the OS but the installation on Windows sho
 git clone https://github.com/tum-pbs/VOLSIM
 cd VOLSIM
 ```
-We recommend to install the required python packages (see `requirements.txt`) via a conda environment (e.g. using [miniconda](https://docs.conda.io/en/latest/miniconda.html)), but it may be possible to install them with *pip* (e.g. via *venv* for a separate environment) as well.
-```
-conda create --name VOLSIM_Env --file requirements.txt --channel default --channel pytorch
-conda activate VOLSIM_Env
-```
-To test if the installation was successful, run `distance_example_simple.py` (see below) and check if the distance output matches with the comment at the bottom of the script. In the following all commands should be run from the root folder of the repository. If you encounter problems with installing, training, or evaluating the metric, let us know by opening an [issue](https://github.com/tum-pbs/VOLSIM/issues).
-
 ## Basic Usage
 To evaluate the metric on two numpy arrays `arr1, arr2` you only need to load the model and call the `computeDistance` method. Supported input shapes are `[width, height, depth, channels]` or `[batch, width, height, depth, channels]`, with one or three channels.
 ```python
