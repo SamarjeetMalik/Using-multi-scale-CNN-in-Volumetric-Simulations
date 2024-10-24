@@ -1,9 +1,9 @@
-# Volumetric Similarity Metric (VolSiM) for Vectorial and Scalar 3D Data
-This repository contains the source code for the paper [Learning Similarity Metrics for Volumetric Simulations with Multiscale CNNs](https://arxiv.org/abs/2202.04109) by [Georg Kohl](https://ge.in.tum.de/about/georg-kohl/), [Liwei Chen](https://ge.in.tum.de/about/dr-liwei-chen/), and [Nils Thuerey](https://ge.in.tum.de/about/n-thuerey/).
 
-*VolSiM* is a metric intended as a comparison method for dense, volumetric, vectorial or scalar data from numerical simulations. It computes a scalar distance value from two inputs that indicates the similarity between them, where a higher value indicates stronger differences. Traditional metrics like L<sup>1</sup> or L<sup>2</sup> distances or the peak signal-to-noise ratio (PSNR) are suboptimal comparison methods for simulation data, as they only consider element-wise comparisons and cannot capture structures on different scales or contextual information. For example, consider a volumetric checkerboard pattern and a version that is translated by one voxel along one dimension. Comparing both element-wise leads to a large distance as all voxels are very different, even though the structure of both patterns is identical. Instead of comparing element-wise, *VolSiM* extracts deep feature maps with a multiscale CNN structure from both inputs and compares them. This means similarity on different scales and recurring structures or patterns are considered in the distance evaluation.
+This repository is the implementation for the paper 
+# [Learning Similarity Metrics for Volumetric Simulations with Multiscale CNNs](https://arxiv.org/abs/2202.04109)
 
-Further information is available at our [project website](https://ge.in.tum.de/publications/2022-volsim-kohl/). To compare scalar 2D data, you can have a look at our CNN-based metric [*LSiM*](https://github.com/tum-pbs/LSIM) that was specifically designed for this data domain. Feel free to contact us if you have questions or suggestions regarding our work or the source code provided here.
+
+
 
 -----------------------------------------------------------------------------------------------------
 
@@ -162,23 +162,3 @@ Backpropagation through the metric network is straightforward by integrating the
 ```
 python src/backprop_example.py
 ```
-
-
------------------------------------------------------------------------------------------------------
-## Citation
-If you use the *VolSiM* metric or the data provided here, please consider citing our work:
-```
-@inproceedings{kohl2023_volsim,
-  author = {Georg Kohl and Li{-}Wei Chen and Nils Thuerey},
-  title = {Learning Similarity Metrics for Volumetric Simulations with Multiscale CNNs},
-  booktitle = {37th {AAAI} Conference on Artificial Intelligence 2023},
-  pages = {8351--8359},
-  publisher = {{AAAI} Press},
-  year = {2023},
-  url = {https://doi.org/10.1609/aaai.v37i7.26007},
-  doi = {10.1609/aaai.v37i7.26007},
-}
-```
-
-## Acknowledgements
-This work was supported by the ERC Consolidator Grant *SpaTe* (CoG-2019-863850). This repository also contains the image-based LPIPS metric from the [perceptual similarity](https://github.com/richzhang/PerceptualSimilarity) repository for comparison.
