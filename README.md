@@ -141,14 +141,12 @@ With the downloaded data sets, the performance of different metrics (element-wis
 python src/eval_metrics_shallow_tb.py
 python src/eval_metrics_trained_tb.py
 ```
-Both scripts compute distances for various metrics on our data sets, and evaluate them against the proposed ground truth distance model. All results are printed in the console and in addition written to tensorboard event files in the `runs` directory. The event files can be read by opening tensorboard via `tensorboard --logdir=runs`. Running the metric evaluation without changes should result in values similar to Table 1 in our paper.
 
 ## Re-training the Model
 The metric can be re-trained from scratch with the downloaded data sets via `training.py`:
 ```
 python src/training.py
 ```
-The training progress is printed in the console and in addition written to tensorboard event files in the `runs` directory. The event files can be read by opening tensorboard via `tensorboard --logdir=runs`. Running the training script without changes should result in a model with a performance close to our final *VolSiM* metric (when evaluated with the metric evaluation above). But of course, minor deviations are expected due to the random nature of the model initialization and training procedure. The training setup for different model variants are included in `training_iso.py` and as a commented set of parameters in `training.py`.
 
 ## Backpropagation through the Metric
 Backpropagation through the metric network is straightforward by integrating the `DistanceModel` class that derives from `torch.nn.Module` in the target network. Load the trained model weights from the model directory with the `load` method in `DistanceModel` on initialization (see Basic Usage above), and freeze all trainable weights of the metric if required. In this case, the metric model should be called directly (with appropriate data handling beforehand) instead of using `computeDistance` to perform the comparison operation. An example for this process based on a simple Autoencoder can be found in `backprop_example.py`:
