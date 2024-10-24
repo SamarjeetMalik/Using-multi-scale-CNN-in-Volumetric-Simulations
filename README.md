@@ -37,7 +37,7 @@ python src/distance_example_detailed.py
 ## Data Generation, Download, and Processing
 
 ### Downloading our data
-Our data sets at resolution $64^3$ (archive size ~89 GB, uncompressed data ~500 GB) can be downloaded via any web browser, `ftp`, or `rsync` here: [https://doi.org/10.14459/2023mp1703144](https://doi.org/10.14459/2023mp1703144). Use this command to directly download all data sets (**rsync password: m1703144**):
+Use this: [https://doi.org/10.14459/2023mp1703144](https://doi.org/10.14459/2023mp1703144). Use this command to directly download all data sets (**rsync password: m1703144**):
 ```
 rsync -P rsync://m1703144@dataserv.ub.tum.de/m1703144/* ./data
 ```
@@ -49,28 +49,6 @@ with the corresponding content of the checksum file downloaded to `data/checksum
 ```
 unzip -o -d data "data/*.zip"
 ```
-
-Furthermore, it is also possible to separately download the individiual sub data sets by replacing the `*` in all three commands above with one of the following archive names:
-
-Archive Name | Size | Description
----|---|---
-train_adv.zip | 5.9 GB | Training + validation set $\texttt{Adv}$ with data from the Advection-Diffusion equation
-train_bur.zip | 16.0 GB | Training + validation set $\texttt{Bur}$ with data from the Burgers' equation
-train_liq.zip | 5.7 GB | Training + validation set $\texttt{Liq}$ with data from liquid simulations
-train_smo.zip | 17.0 GB | Training + validation set $\texttt{Smo}$ with data from smoke simulations
-test_advd.zip | 0.73 GB | Test set $\texttt{AdvD}$ with data from the Advection-Diffusion equation
-test_liqn.zip | 1.8 GB | Test set $\texttt{LiqN}$ with data from liquid simulations
-test_sha.zip | 0.64 GB | Test set $\texttt{Sha}$ with moving shapes data
-test_wav.zip | 1.3 GB | Test set $\texttt{Wav}$ with moving damped wave data
-test_iso.zip | 1.8 GB | Test set $\texttt{Iso}$ with JHTDB data of isotropic turbulence
-test_cha.zip | 1.8 GB | Test set $\texttt{Cha}$ with JHTDB data from a channel flow
-test_mhd.zip | 1.8 GB | Test set $\texttt{Mhd}$ with JHTDB data of magneto-hydrodynamic turbulence
-test_tra.zip | 1.8 GB | Test set $\texttt{Tra}$ with JHTDB data from a transitional boundary layer
-test_sf.zip | 6.2 GB | Test set $\texttt{SF}$ with data from ScalarFlow
-additional_iso.zip | 11.0 GB | Additional $\texttt{Iso}$ data to train the MS_addedIso and MS_onlyIso models
-additional_isoExtra.zip | 18.0 GB | Additional $\texttt{Iso}$ data to train the MS_onlyIso model
-(checksums.sha512) | (4.0 KB) | (Checksum file only used to check archive validity)
-
 ### Generation from MantaFlow
 <details>
 <summary>Click to expand detailed MantaFlow instructions</summary>
